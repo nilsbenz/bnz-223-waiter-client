@@ -22,6 +22,9 @@ export class Header {
           <stencil-route-link url="/items" activeClass="active" exact={true}>
             <button>Angebot</button>
           </stencil-route-link>
+          <stencil-route-link url="/tables" activeClass="active" exact={true}>
+            <button>Tische</button>
+          </stencil-route-link>
         </div>
         <button onClick={() => this.loggedOut.emit()}>Ausloggen</button>
       </nav>

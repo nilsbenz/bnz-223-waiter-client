@@ -8,10 +8,6 @@
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
-  Item,
-  User,
-} from './services/types';
-import {
   RouterHistory,
 } from '@stencil/router';
 
@@ -27,9 +23,7 @@ export namespace Components {
     'nav': boolean;
   }
   interface WtrHome {}
-  interface WtrItems {
-    'items': Item[];
-  }
+  interface WtrItems {}
   interface WtrLogin {
     'history': RouterHistory;
   }
@@ -37,6 +31,7 @@ export namespace Components {
     'history': RouterHistory;
   }
   interface WtrRoot {}
+  interface WtrTables {}
   interface WtrTextfield {
     'label': string;
     'name': string;
@@ -47,9 +42,7 @@ export namespace Components {
     'variant': 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | undefined;
   }
   interface WtrUnauthorized {}
-  interface WtrUsers {
-    'users': User[];
-  }
+  interface WtrUsers {}
 }
 
 declare global {
@@ -103,6 +96,12 @@ declare global {
     new (): HTMLWtrRootElement;
   };
 
+  interface HTMLWtrTablesElement extends Components.WtrTables, HTMLStencilElement {}
+  var HTMLWtrTablesElement: {
+    prototype: HTMLWtrTablesElement;
+    new (): HTMLWtrTablesElement;
+  };
+
   interface HTMLWtrTextfieldElement extends Components.WtrTextfield, HTMLStencilElement {}
   var HTMLWtrTextfieldElement: {
     prototype: HTMLWtrTextfieldElement;
@@ -135,6 +134,7 @@ declare global {
     'wtr-login': HTMLWtrLoginElement;
     'wtr-register': HTMLWtrRegisterElement;
     'wtr-root': HTMLWtrRootElement;
+    'wtr-tables': HTMLWtrTablesElement;
     'wtr-textfield': HTMLWtrTextfieldElement;
     'wtr-typography': HTMLWtrTypographyElement;
     'wtr-unauthorized': HTMLWtrUnauthorizedElement;
@@ -155,9 +155,7 @@ declare namespace LocalJSX {
     'onLoggedOut'?: (event: CustomEvent<any>) => void;
   }
   interface WtrHome {}
-  interface WtrItems {
-    'items'?: Item[];
-  }
+  interface WtrItems {}
   interface WtrLogin {
     'history'?: RouterHistory;
     'onLoggedIn'?: (event: CustomEvent<any>) => void;
@@ -167,6 +165,7 @@ declare namespace LocalJSX {
     'onLoggedIn'?: (event: CustomEvent<any>) => void;
   }
   interface WtrRoot {}
+  interface WtrTables {}
   interface WtrTextfield {
     'label'?: string;
     'name'?: string;
@@ -178,9 +177,7 @@ declare namespace LocalJSX {
     'variant'?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | undefined;
   }
   interface WtrUnauthorized {}
-  interface WtrUsers {
-    'users'?: User[];
-  }
+  interface WtrUsers {}
 
   interface IntrinsicElements {
     'wtr-button': WtrButton;
@@ -191,6 +188,7 @@ declare namespace LocalJSX {
     'wtr-login': WtrLogin;
     'wtr-register': WtrRegister;
     'wtr-root': WtrRoot;
+    'wtr-tables': WtrTables;
     'wtr-textfield': WtrTextfield;
     'wtr-typography': WtrTypography;
     'wtr-unauthorized': WtrUnauthorized;
@@ -212,6 +210,7 @@ declare module "@stencil/core" {
       'wtr-login': LocalJSX.WtrLogin & JSXBase.HTMLAttributes<HTMLWtrLoginElement>;
       'wtr-register': LocalJSX.WtrRegister & JSXBase.HTMLAttributes<HTMLWtrRegisterElement>;
       'wtr-root': LocalJSX.WtrRoot & JSXBase.HTMLAttributes<HTMLWtrRootElement>;
+      'wtr-tables': LocalJSX.WtrTables & JSXBase.HTMLAttributes<HTMLWtrTablesElement>;
       'wtr-textfield': LocalJSX.WtrTextfield & JSXBase.HTMLAttributes<HTMLWtrTextfieldElement>;
       'wtr-typography': LocalJSX.WtrTypography & JSXBase.HTMLAttributes<HTMLWtrTypographyElement>;
       'wtr-unauthorized': LocalJSX.WtrUnauthorized & JSXBase.HTMLAttributes<HTMLWtrUnauthorizedElement>;

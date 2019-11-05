@@ -1,0 +1,47 @@
+.create-table {
+  background-color: var(--paper);
+  padding: var(--spacing-1);
+  display: flex;
+  justify-content: center;
+}
+
+.create-table-form {
+  display: flex;
+  flex-direction: column;
+  min-width: 280px;
+}
+
+.create-table-form-label {
+  margin-left: var(--spacing-0-5);
+}
+
+.create-table-form-input {
+  margin: var(--spacing-1) 0;
+}
+
+.create-table-form-submit {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-table-form-submit-button {
+  align-self: flex-end;
+}
+
+.table-list {
+  background-color: var(--paper);
+  padding: var(--spacing-1) 0;
+}
+
+.table-list-item {
+  padding: var(--spacing-1) var(--spacing-2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+img {
+  height: 1.4rem;
+  width: 1.4rem;
+  cursor: pointer;
+}

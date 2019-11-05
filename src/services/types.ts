@@ -11,3 +11,8 @@ export interface Item {
   description: string,
   price: number
 }
+
+export interface Table {
+  id?: number,
+  description: string
+}

@@ -43,6 +43,7 @@ export class Root {
               <PrivateRoute url='/' loggedIn={this.loggedIn} component='wtr-home' exact={true}/>
               <PrivateRoute url='/users' loggedIn={this.loggedIn} component='wtr-users' exact={true}/>
               <PrivateRoute url='/items' loggedIn={this.loggedIn} component='wtr-items' exact={true}/>
+              <PrivateRoute url='/tables' loggedIn={this.loggedIn} component='wtr-tables' exact={true}/>
               <PrivateRoute url='/unauthorized' loggedIn={this.loggedIn} component='wtr-unauthorized' exact={true}/>
               <stencil-route url='/login' component='wtr-login'/>
               <stencil-route url='/register' component='wtr-register'/>
