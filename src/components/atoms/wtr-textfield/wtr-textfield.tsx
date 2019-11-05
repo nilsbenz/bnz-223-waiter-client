@@ -7,7 +7,7 @@ import {Component, Event, EventEmitter, h, Prop} from '@stencil/core';
 })
 export class TextField {
 
-  @Prop() type: 'text' | 'password' | 'email' | undefined = 'text';
+  @Prop() type: 'text' | 'password' | 'email' | 'number' | undefined = 'text';
   @Prop() label: string;
   @Prop({reflect: true}) value: string;
   @Prop() name: string;

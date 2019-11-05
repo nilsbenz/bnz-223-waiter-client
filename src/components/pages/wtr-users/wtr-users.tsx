@@ -1,4 +1,4 @@
-import {Component, h, Prop} from '@stencil/core';
+import {Component, h, State} from '@stencil/core';
 import UserService from '../../../services/userService';
 import {User} from '../../../services/types';
 
@@ -9,7 +9,7 @@ import {User} from '../../../services/types';
 })
 export class Users {
 
-  @Prop() users: User[];
+  @State() users: User[];
 
   private user: User = JSON.parse(localStorage.getItem('user'));
   private userService: UserService;

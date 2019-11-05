@@ -1,7 +1,13 @@
 export interface User {
-  id: number,
+  id?: number,
   username: string,
   password: string,
-  admin: boolean,
-  waiter: boolean
+  admin?: boolean,
+  waiter?: boolean
+}
+
+export interface Item {
+  id?: number,
+  description: string,
+  price: number
 }

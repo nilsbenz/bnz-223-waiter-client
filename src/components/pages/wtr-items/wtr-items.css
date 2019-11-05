@@ -1,0 +1,45 @@
+.create-item {
+  background-color: var(--paper);
+  padding: var(--spacing-1);
+  display: flex;
+  justify-content: center;
+}
+
+.create-item-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-item-form-label {
+  margin-left: var(--spacing-0-5);
+}
+
+.create-item-form-input {
+  display: grid;
+  grid-template-columns: 280px 280px;
+  grid-auto-flow: column;
+  margin: var(--spacing-1) 0;
+}
+
+.create-item-form-submit {
+  align-self: flex-end;
+}
+
+.item-list {
+  background-color: var(--paper);
+  padding: var(--spacing-1) 0;
+}
+
+.item-list-item {
+  padding: var(--spacing-1) var(--spacing-2);
+  display: grid;
+  grid-template-columns: 1fr 1fr 60px;
+  grid-auto-flow: column;
+}
+
+img {
+  height: 1.4rem;
+  width: 1.4rem;
+  cursor: pointer;
+  justify-self: flex-end;
+}
