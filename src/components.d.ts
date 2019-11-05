@@ -7,7 +7,9 @@
 
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-
+import {
+  RouterHistory,
+} from '@stencil/router';
 
 export namespace Components {
   interface WtrButton {
@@ -17,8 +19,14 @@ export namespace Components {
   }
   interface WtrContainer {}
   interface WtrHeader {
-    'darkMode': boolean;
     'nav': boolean;
+  }
+  interface WtrHome {}
+  interface WtrLogin {
+    'history': RouterHistory;
+  }
+  interface WtrRegister {
+    'history': RouterHistory;
   }
   interface WtrRoot {}
   interface WtrTextfield {
@@ -30,6 +38,8 @@ export namespace Components {
   interface WtrTypography {
     'variant': 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | undefined;
   }
+  interface WtrUnauthorized {}
+  interface WtrUsers {}
 }
 
 declare global {
@@ -53,6 +63,24 @@ declare global {
     new (): HTMLWtrHeaderElement;
   };
 
+  interface HTMLWtrHomeElement extends Components.WtrHome, HTMLStencilElement {}
+  var HTMLWtrHomeElement: {
+    prototype: HTMLWtrHomeElement;
+    new (): HTMLWtrHomeElement;
+  };
+
+  interface HTMLWtrLoginElement extends Components.WtrLogin, HTMLStencilElement {}
+  var HTMLWtrLoginElement: {
+    prototype: HTMLWtrLoginElement;
+    new (): HTMLWtrLoginElement;
+  };
+
+  interface HTMLWtrRegisterElement extends Components.WtrRegister, HTMLStencilElement {}
+  var HTMLWtrRegisterElement: {
+    prototype: HTMLWtrRegisterElement;
+    new (): HTMLWtrRegisterElement;
+  };
+
   interface HTMLWtrRootElement extends Components.WtrRoot, HTMLStencilElement {}
   var HTMLWtrRootElement: {
     prototype: HTMLWtrRootElement;
@@ -70,13 +98,30 @@ declare global {
     prototype: HTMLWtrTypographyElement;
     new (): HTMLWtrTypographyElement;
   };
+
+  interface HTMLWtrUnauthorizedElement extends Components.WtrUnauthorized, HTMLStencilElement {}
+  var HTMLWtrUnauthorizedElement: {
+    prototype: HTMLWtrUnauthorizedElement;
+    new (): HTMLWtrUnauthorizedElement;
+  };
+
+  interface HTMLWtrUsersElement extends Components.WtrUsers, HTMLStencilElement {}
+  var HTMLWtrUsersElement: {
+    prototype: HTMLWtrUsersElement;
+    new (): HTMLWtrUsersElement;
+  };
   interface HTMLElementTagNameMap {
     'wtr-button': HTMLWtrButtonElement;
     'wtr-container': HTMLWtrContainerElement;
     'wtr-header': HTMLWtrHeaderElement;
+    'wtr-home': HTMLWtrHomeElement;
+    'wtr-login': HTMLWtrLoginElement;
+    'wtr-register': HTMLWtrRegisterElement;
     'wtr-root': HTMLWtrRootElement;
     'wtr-textfield': HTMLWtrTextfieldElement;
     'wtr-typography': HTMLWtrTypographyElement;
+    'wtr-unauthorized': HTMLWtrUnauthorizedElement;
+    'wtr-users': HTMLWtrUsersElement;
   }
 }
 
@@ -88,10 +133,17 @@ declare namespace LocalJSX {
   }
   interface WtrContainer {}
   interface WtrHeader {
-    'darkMode'?: boolean;
     'nav'?: boolean;
     'onLoggedOut'?: (event: CustomEvent<any>) => void;
-    'onToggleDarkMode'?: (event: CustomEvent<any>) => void;
+  }
+  interface WtrHome {}
+  interface WtrLogin {
+    'history'?: RouterHistory;
+    'onLoggedIn'?: (event: CustomEvent<any>) => void;
+  }
+  interface WtrRegister {
+    'history'?: RouterHistory;
+    'onLoggedIn'?: (event: CustomEvent<any>) => void;
   }
   interface WtrRoot {}
   interface WtrTextfield {
@@ -104,14 +156,21 @@ declare namespace LocalJSX {
   interface WtrTypography {
     'variant'?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | undefined;
   }
+  interface WtrUnauthorized {}
+  interface WtrUsers {}
 
   interface IntrinsicElements {
     'wtr-button': WtrButton;
     'wtr-container': WtrContainer;
     'wtr-header': WtrHeader;
+    'wtr-home': WtrHome;
+    'wtr-login': WtrLogin;
+    'wtr-register': WtrRegister;
     'wtr-root': WtrRoot;
     'wtr-textfield': WtrTextfield;
     'wtr-typography': WtrTypography;
+    'wtr-unauthorized': WtrUnauthorized;
+    'wtr-users': WtrUsers;
   }
 }
 
@@ -124,9 +183,14 @@ declare module "@stencil/core" {
       'wtr-button': LocalJSX.WtrButton & JSXBase.HTMLAttributes<HTMLWtrButtonElement>;
       'wtr-container': LocalJSX.WtrContainer & JSXBase.HTMLAttributes<HTMLWtrContainerElement>;
       'wtr-header': LocalJSX.WtrHeader & JSXBase.HTMLAttributes<HTMLWtrHeaderElement>;
+      'wtr-home': LocalJSX.WtrHome & JSXBase.HTMLAttributes<HTMLWtrHomeElement>;
+      'wtr-login': LocalJSX.WtrLogin & JSXBase.HTMLAttributes<HTMLWtrLoginElement>;
+      'wtr-register': LocalJSX.WtrRegister & JSXBase.HTMLAttributes<HTMLWtrRegisterElement>;
       'wtr-root': LocalJSX.WtrRoot & JSXBase.HTMLAttributes<HTMLWtrRootElement>;
       'wtr-textfield': LocalJSX.WtrTextfield & JSXBase.HTMLAttributes<HTMLWtrTextfieldElement>;
       'wtr-typography': LocalJSX.WtrTypography & JSXBase.HTMLAttributes<HTMLWtrTypographyElement>;
+      'wtr-unauthorized': LocalJSX.WtrUnauthorized & JSXBase.HTMLAttributes<HTMLWtrUnauthorizedElement>;
+      'wtr-users': LocalJSX.WtrUsers & JSXBase.HTMLAttributes<HTMLWtrUsersElement>;
     }
   }
 }

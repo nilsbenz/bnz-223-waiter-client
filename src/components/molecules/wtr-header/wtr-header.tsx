@@ -9,10 +9,33 @@ export class Header {
 
   @Prop() nav: boolean = true;
 
-  @Prop() darkMode: boolean;
-
   @Event() loggedOut: EventEmitter;
-  @Event() toggleDarkMode: EventEmitter;
+
+  renderAdminNav() {
+    return (
+      <nav>
+        <div>
+          <stencil-route-link url="/users" activeClass="active" exact={true}>
+            <button>Benutzer</button>
+          </stencil-route-link>
+        </div>
+        <button onClick={() => this.loggedOut.emit()}>Ausloggen</button>
+      </nav>
+    );
+  }
+
+  renderWaiterNav() {
+    return (
+      <nav>
+        <div>
+          <stencil-route-link url="/" activeClass="active" exact={true}>
+            <button>Home</button>
+          </stencil-route-link>
+        </div>
+        <button onClick={() => this.loggedOut.emit()}>Ausloggen</button>
+      </nav>
+    );
+  }
 
   render() {
     if (this.nav) {
@@ -22,14 +45,10 @@ export class Header {
             <img src='assets/icon/cocktail.svg' alt=''/>
             <h1>waiter</h1>
           </div>
-          <nav>
-            <div>
-              <stencil-route-link url="/" activeClass="active" exact={true}>
-                <button>Home</button>
-              </stencil-route-link>
-            </div>
-            <button onClick={() => this.loggedOut.emit()}>Ausloggen</button>
-          </nav>
+          {JSON.parse(localStorage.getItem('user')).admin
+            ? this.renderAdminNav()
+            : this.renderWaiterNav()
+          }
         </header>
       );
     } else {
@@ -37,7 +56,7 @@ export class Header {
         <header class='no-nav'>
           <div class='flex'>
             <img src='assets/icon/cocktail.svg' alt=''/>
-            <h1>notify</h1>
+            <h1>waiter</h1>
           </div>
         </header>
       )
