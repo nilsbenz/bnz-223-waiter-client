@@ -35,7 +35,7 @@ export class Root {
   render() {
     return (
       <div>
-        <wtr-header/>
+        <wtr-header loggedIn={this.loggedIn}/>
 
         <main>
           <stencil-router>

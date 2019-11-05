@@ -1,8 +1,9 @@
 import CryptoJS from "crypto-js";
 import {fetchWithToken} from '../util/fetch';
+import {User} from './types';
 
 class AuthService {
-  async register(user): Promise<boolean> {
+  async register(user: User): Promise<boolean> {
     user.password = this.encryptPassword(user.password);
     const res = await fetch('/api/auth/register', {
       method: 'POST',
@@ -14,7 +15,7 @@ class AuthService {
     return res.status === 200;
   }
 
-  async login(user, alreadyEncrypted?): Promise<boolean> {
+  async login(user: User, alreadyEncrypted?: boolean): Promise<boolean> {
     if (!alreadyEncrypted) {
       user.password = this.encryptPassword(user.password);
     }

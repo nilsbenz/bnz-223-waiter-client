@@ -8,6 +8,7 @@ import {Component, Event, EventEmitter, h, Prop} from '@stencil/core';
 export class Header {
 
   @Prop() nav: boolean = true;
+  @Prop() loggedIn: boolean;
 
   @Event() loggedOut: EventEmitter;
 

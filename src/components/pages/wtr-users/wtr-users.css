@@ -1,0 +1,24 @@
+.user-list {
+  background-color: var(--paper);
+  padding: var(--spacing-1) 0;
+}
+
+.user-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-1) var(--spacing-2);
+  min-height: 46px;
+}
+
+.user-list-item div {
+  display: flex;
+  align-items: center;
+}
+
+img {
+  margin-left: var(--spacing-0-5);
+  height: 1.4rem;
+  width: 1.4rem;
+  cursor: pointer;
+}

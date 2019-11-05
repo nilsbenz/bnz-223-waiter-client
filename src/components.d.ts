@@ -10,6 +10,9 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
   RouterHistory,
 } from '@stencil/router';
+import {
+  User,
+} from './services/types';
 
 export namespace Components {
   interface WtrButton {
@@ -19,6 +22,7 @@ export namespace Components {
   }
   interface WtrContainer {}
   interface WtrHeader {
+    'loggedIn': boolean;
     'nav': boolean;
   }
   interface WtrHome {}
@@ -39,7 +43,9 @@ export namespace Components {
     'variant': 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | undefined;
   }
   interface WtrUnauthorized {}
-  interface WtrUsers {}
+  interface WtrUsers {
+    'users': User[];
+  }
 }
 
 declare global {
@@ -133,6 +139,7 @@ declare namespace LocalJSX {
   }
   interface WtrContainer {}
   interface WtrHeader {
+    'loggedIn'?: boolean;
     'nav'?: boolean;
     'onLoggedOut'?: (event: CustomEvent<any>) => void;
   }
@@ -157,7 +164,9 @@ declare namespace LocalJSX {
     'variant'?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | undefined;
   }
   interface WtrUnauthorized {}
-  interface WtrUsers {}
+  interface WtrUsers {
+    'users'?: User[];
+  }
 
   interface IntrinsicElements {
     'wtr-button': WtrButton;
