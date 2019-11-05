@@ -1,0 +1,114 @@
+button {
+  font-size: 0.875rem;
+  background: none;
+  border: 1px solid transparent;
+  padding: 6px 16px;
+  text-transform: uppercase;
+  border-radius: var(--spacing-0-5);
+  letter-spacing: 0.025rem;
+  line-height: 1.75;
+  font-weight: 500;
+  min-width: 64px;
+  cursor: pointer;
+  margin: var(--spacing-0-5);
+  transition: all var(--time);
+  outline: none;
+  text-decoration: none;
+}
+
+.text-default {
+  color: var(--default-contrast);
+}
+
+.text-default:hover {
+  background-color: var(--default-background);
+  border-color: var(--default-background);
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.text-primary:hover {
+  background-color: var(--primary-background);
+  border-color: var(--primary-background);
+}
+
+.text-secondary {
+  color: var(--secondary);
+}
+
+.text-secondary:hover {
+  background-color: var(--secondary-background);
+  border-color: var(--secondary-background);
+}
+
+.outlined-default {
+  border-color: var(--default-light);
+  color: var(--default-contrast);
+}
+
+.outlined-default:hover {
+  background-color: var(--default-background);
+  border-color: var(--default);
+}
+
+.outlined-primary {
+  border-color: var(--primary-light);
+  color: var(--primary);
+}
+
+.outlined-primary:hover {
+  background-color: var(--primary-background);
+  border-color: var(--primary);
+}
+
+.outlined-secondary {
+  border-color: var(--secondary-light);
+  color: var(--secondary);
+}
+
+.outlined-secondary:hover {
+  background-color: var(--secondary-background);
+  border-color: var(--secondary);
+}
+
+.contained-default {
+  background-color: var(--default);
+  border-color: var(--default);
+  color: var(--default-contrast);
+  box-shadow: var(--shadow);
+}
+
+.contained-default:hover {
+  background-color: var(--default-dark);
+  border-color: var(--default-dark);
+}
+
+.contained-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--primary-contrast);
+  box-shadow: var(--shadow);
+}
+
+.contained-primary:hover {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+.contained-secondary {
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+  color: var(--secondary-contrast);
+  box-shadow: var(--shadow);
+}
+
+.contained-secondary:hover {
+  background-color: var(--secondary-dark);
+  border-color: var(--secondary-dark);
+}
+
+.contained-default:active, .contained-primary:active, .contained-secondary:active {
+  box-shadow: var(--shadow-active);
+}

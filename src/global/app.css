@@ -1,0 +1,50 @@
+@font-face {
+  font-family: HeadingFont;
+  src: url("/assets/fonts/Staatliches-Regular.ttf");
+}
+
+@font-face {
+  font-family: MainFont;
+  src: url("/assets/fonts/Roboto-Regular.ttf");
+}
+
+:root {
+  --primary: #ec407a;
+  --primary-dark: #b4004e;
+  --primary-light: #ff77a9;
+  --primary-contrast: #000;
+  --primary-background: #fce4ec;
+  --secondary: #00bcd4;
+  --secondary-dark: #008ba3;
+  --secondary-light: #62efff;
+  --secondary-contrast: #000;
+  --secondary-background: #e0f7fa;
+  --default: #BBB;
+  --default-dark: #AAA;
+  --default-light: #CCC;
+  --default-contrast: #000;
+  --default-background: #EEE;
+  --background: #F5F5F5;
+  --background-contrast: #000;
+  --text: #000;
+  --text-disabled: #999;
+  --paper: #FFF;
+  --paper-contrast: #000;
+  --spacing-0-5: 4px;
+  --spacing-1: 8px;
+  --spacing-2: 16px;
+  --spacing-3: 24px;
+  --spacing-4: 32px;
+  --time: .2s;
+  --shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+  --shadow-active: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+  --heading-font: HeadingFont;
+  --main-font: MainFont;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--main-font);
+  background-color: var(--background);
+}

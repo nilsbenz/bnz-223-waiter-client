@@ -1,0 +1,73 @@
+* {
+  box-sizing: border-box;
+}
+
+.input {
+  position: relative;
+  margin: 0 var(--spacing-0-5);
+}
+
+input {
+  -webkit-appearance: none;
+  width: calc(100% - var(--spacing-0-5) - var(--spacing-0-5));
+  max-width: 280px;
+  border: 0;
+  font-family: inherit;
+  padding: 0;
+  height: 32px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-bottom: 1px solid var(--text);
+  background: none;
+  border-radius: 0;
+  color: var(--text);
+  transition: all .15s ease;
+  outline: none;
+  margin: 16px 0 0;
+}
+
+.label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 1rem;
+  color: var(--text-disabled);
+  font-weight: 500;
+  transform-origin: 0 0;
+  transition: all .2s ease;
+  pointer-events: none;
+}
+
+.border, .border-hover {
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: 0 0;
+}
+
+.border {
+  transition: all .15s ease;
+}
+
+input:not(:placeholder-shown) + .label {
+  color: var(--text-disabled);
+  transform: translateY(-24px) scale(.75);
+}
+
+input:hover ~ .border-hover {
+  transform: scaleX(1);
+  background-color: var(--text);
+}
+
+input:focus + .label {
+  color: var(--primary);
+  transform: translateY(-24px) scale(.75);
+}
+
+input:focus ~ .border {
+  transform: scaleX(1);
+}
