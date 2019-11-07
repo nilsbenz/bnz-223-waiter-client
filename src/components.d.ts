@@ -22,9 +22,14 @@ export namespace Components {
     'loggedIn': boolean;
     'nav': boolean;
   }
-  interface WtrHome {}
+  interface WtrHome {
+    'history': RouterHistory;
+  }
   interface WtrItems {}
   interface WtrLogin {
+    'history': RouterHistory;
+  }
+  interface WtrOrders {
     'history': RouterHistory;
   }
   interface WtrRegister {
@@ -84,6 +89,12 @@ declare global {
     new (): HTMLWtrLoginElement;
   };
 
+  interface HTMLWtrOrdersElement extends Components.WtrOrders, HTMLStencilElement {}
+  var HTMLWtrOrdersElement: {
+    prototype: HTMLWtrOrdersElement;
+    new (): HTMLWtrOrdersElement;
+  };
+
   interface HTMLWtrRegisterElement extends Components.WtrRegister, HTMLStencilElement {}
   var HTMLWtrRegisterElement: {
     prototype: HTMLWtrRegisterElement;
@@ -132,6 +143,7 @@ declare global {
     'wtr-home': HTMLWtrHomeElement;
     'wtr-items': HTMLWtrItemsElement;
     'wtr-login': HTMLWtrLoginElement;
+    'wtr-orders': HTMLWtrOrdersElement;
     'wtr-register': HTMLWtrRegisterElement;
     'wtr-root': HTMLWtrRootElement;
     'wtr-tables': HTMLWtrTablesElement;
@@ -154,11 +166,16 @@ declare namespace LocalJSX {
     'nav'?: boolean;
     'onLoggedOut'?: (event: CustomEvent<any>) => void;
   }
-  interface WtrHome {}
+  interface WtrHome {
+    'history'?: RouterHistory;
+  }
   interface WtrItems {}
   interface WtrLogin {
     'history'?: RouterHistory;
     'onLoggedIn'?: (event: CustomEvent<any>) => void;
+  }
+  interface WtrOrders {
+    'history'?: RouterHistory;
   }
   interface WtrRegister {
     'history'?: RouterHistory;
@@ -186,6 +203,7 @@ declare namespace LocalJSX {
     'wtr-home': WtrHome;
     'wtr-items': WtrItems;
     'wtr-login': WtrLogin;
+    'wtr-orders': WtrOrders;
     'wtr-register': WtrRegister;
     'wtr-root': WtrRoot;
     'wtr-tables': WtrTables;
@@ -208,6 +226,7 @@ declare module "@stencil/core" {
       'wtr-home': LocalJSX.WtrHome & JSXBase.HTMLAttributes<HTMLWtrHomeElement>;
       'wtr-items': LocalJSX.WtrItems & JSXBase.HTMLAttributes<HTMLWtrItemsElement>;
       'wtr-login': LocalJSX.WtrLogin & JSXBase.HTMLAttributes<HTMLWtrLoginElement>;
+      'wtr-orders': LocalJSX.WtrOrders & JSXBase.HTMLAttributes<HTMLWtrOrdersElement>;
       'wtr-register': LocalJSX.WtrRegister & JSXBase.HTMLAttributes<HTMLWtrRegisterElement>;
       'wtr-root': LocalJSX.WtrRoot & JSXBase.HTMLAttributes<HTMLWtrRootElement>;
       'wtr-tables': LocalJSX.WtrTables & JSXBase.HTMLAttributes<HTMLWtrTablesElement>;

@@ -25,6 +25,9 @@ export class Header {
           <stencil-route-link url="/tables" activeClass="active" exact={true}>
             <button>Tische</button>
           </stencil-route-link>
+          <stencil-route-link url="/orders" activeClass="active" exact={true}>
+            <button>Bestellungen</button>
+          </stencil-route-link>
         </div>
         <button onClick={() => this.loggedOut.emit()}>Ausloggen</button>
       </nav>
@@ -36,7 +39,10 @@ export class Header {
       <nav>
         <div>
           <stencil-route-link url="/" activeClass="active" exact={true}>
-            <button>Home</button>
+            <button>Neue Bestellung</button>
+          </stencil-route-link>
+          <stencil-route-link url="/orders" activeClass="active" exact={true}>
+            <button>Bestellungen</button>
           </stencil-route-link>
         </div>
         <button onClick={() => this.loggedOut.emit()}>Ausloggen</button>

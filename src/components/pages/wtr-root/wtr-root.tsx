@@ -41,6 +41,7 @@ export class Root {
           <stencil-router>
             <stencil-route-switch scrollTopOffset={0}>
               <PrivateRoute url='/' loggedIn={this.loggedIn} component='wtr-home' exact={true}/>
+              <PrivateRoute url='/orders' loggedIn={this.loggedIn} component='wtr-orders' exact={true}/>
               <PrivateRoute url='/users' loggedIn={this.loggedIn} component='wtr-users' exact={true}/>
               <PrivateRoute url='/items' loggedIn={this.loggedIn} component='wtr-items' exact={true}/>
               <PrivateRoute url='/tables' loggedIn={this.loggedIn} component='wtr-tables' exact={true}/>
