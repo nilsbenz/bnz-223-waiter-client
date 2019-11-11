@@ -8,6 +8,14 @@ class UserService {
     return await res.json();
   }
 
+  async deleteUser(id: number): Promise<boolean> {
+    const res = await fetchWithToken(`/api/users/${id}`, {
+      method: 'DELETE',
+      headers: {}
+    });
+    return res.status === 200;
+  }
+
   async addAdmin(id: number): Promise<void> {
     await fetchWithToken(`/api/users/admins/${id}`, {
       method: 'POST',

@@ -10,6 +10,7 @@ import {User} from '../../../services/types';
 export class Users {
 
   @State() users: User[];
+  @State() attemptedDeletedUser: User;
 
   private user: User = JSON.parse(localStorage.getItem('user'));
   private userService: UserService;
@@ -17,6 +18,7 @@ export class Users {
   async componentWillLoad() {
     this.userService = new UserService();
     this.users = [];
+    this.attemptedDeletedUser = {username: '', password: ''};
     this.users = await this.userService.listUsers();
   }
 
@@ -38,6 +40,14 @@ export class Users {
   async removeWaiter(id: number): Promise<void> {
     await this.userService.removeWaiter(id);
     this.users = await this.userService.listUsers();
+  }
+
+  async deleteUser(user: User): Promise<void> {
+    if (await this.userService.deleteUser(user.id)) {
+      this.users = await this.userService.listUsers();
+    } else {
+      this.attemptedDeletedUser = user;
+    }
   }
 
   render() {
@@ -67,12 +77,30 @@ export class Users {
                         Waiter
                       </wtr-button>
                     }
+                    <img src='assets/icon/trash-alt.svg' alt='' onClick={() => this.deleteUser(user)}/>
                   </div>
                 )}
               </div>
             )}
           </div>
         </wtr-container>
+        {this.attemptedDeletedUser.username && (
+          <div class='popup'>
+            <div class='popup-content'>
+              <wtr-typography variant='h1'>
+                Sorry
+              </wtr-typography>
+              <wtr-typography>
+                Der Benutzer {this.attemptedDeletedUser.username} kann nicht gelöscht werden, da er Waiter ist und
+                bereits Bestellungen erfasst hat.
+              </wtr-typography>
+              <wtr-button variant='contained' color='primary'
+                          onClick={() => this.attemptedDeletedUser = {username: '', password: ''}}>
+                Schliessen
+              </wtr-button>
+            </div>
+          </div>
+        )}
       </div>
     );
   }
