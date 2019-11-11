@@ -18,11 +18,12 @@ class ItemService {
     });
   }
 
-  async deleteItem(id: number): Promise<void> {
-    await fetchWithToken(`/api/items/${id}`, {
+  async deleteItem(id: number): Promise<boolean> {
+    const res = await fetchWithToken(`/api/items/${id}`, {
       method: 'DELETE',
       headers: {}
     });
+    return res.status === 200;
   }
 }
 

@@ -11,6 +11,7 @@ export class Items {
 
   @State() items: Item[];
   @State() alert: boolean;
+  @State() attemptedDeletedItem: Item;
 
   private item: Item = {
     description: '',
@@ -30,9 +31,12 @@ export class Items {
     }
   }
 
-  async deleteItem(id: number): Promise<void> {
-    await this.itemService.deleteItem(id);
-    this.items = await this.itemService.listItems();
+  async deleteItem(item: Item): Promise<void> {
+    if (await this.itemService.deleteItem(item.id)) {
+      this.items = await this.itemService.listItems();
+    } else {
+      this.attemptedDeletedItem = item;
+    }
   }
 
   @Listen('handleInput')
@@ -57,6 +61,7 @@ export class Items {
   async componentWillLoad() {
     this.itemService = new ItemService();
     this.items = [];
+    this.attemptedDeletedItem = {description: '', price: null}
     this.items = await this.itemService.listItems();
   }
 
@@ -88,11 +93,28 @@ export class Items {
                 <wtr-typography class='item-list-item-price'>
                   Fr. {Number(Math.round(item.price * 100) / 100).toFixed(2)}
                 </wtr-typography>
-                <img src='assets/icon/trash-alt.svg' alt='' onClick={() => this.deleteItem(item.id)}/>
+                <img src='assets/icon/trash-alt.svg' alt='' onClick={() => this.deleteItem(item)}/>
               </div>
             )}
           </div>
         </wtr-container>
+        {this.attemptedDeletedItem.description && (
+          <div class='popup'>
+            <div class='popup-content'>
+              <wtr-typography variant='h1'>
+                Sorry
+              </wtr-typography>
+              <wtr-typography>
+                Der Artikel {this.attemptedDeletedItem.description} kann nicht gelöscht werden, da dieser bereits in
+                einer Bestellung vorhanden ist.
+              </wtr-typography>
+              <wtr-button variant='contained' color='primary'
+                          onClick={() => this.attemptedDeletedItem = {description: '', price: null}}>
+                Schliessen
+              </wtr-button>
+            </div>
+          </div>
+        )}
       </div>
     );
   }
