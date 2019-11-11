@@ -18,11 +18,12 @@ class TableService {
     });
   }
 
-  async deleteTable(id: number): Promise<void> {
-    await fetchWithToken(`/api/tables/${id}`, {
+  async deleteTable(id: number): Promise<boolean> {
+    const res = await fetchWithToken(`/api/tables/${id}`, {
       method: 'DELETE',
       headers: {}
     });
+    return res.status === 200;
   }
 }
 

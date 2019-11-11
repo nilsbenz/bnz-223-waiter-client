@@ -11,6 +11,7 @@ export class Tables {
 
   @State() tables: Table[];
   @State() alert: boolean;
+  @State() attemptedDeletedTable: Table;
 
   private table: Table = {
     description: ''
@@ -28,9 +29,12 @@ export class Tables {
     }
   }
 
-  async deleteTable(id: number): Promise<void> {
-    await this.tableService.deleteTable(id);
-    this.tables = await this.tableService.listTables();
+  async deleteTable(table: Table): Promise<void> {
+    if (await this.tableService.deleteTable(table.id)) {
+      this.tables = await this.tableService.listTables();
+    } else {
+      this.attemptedDeletedTable = table;
+    }
   }
 
   @Listen('handleInput')
@@ -50,6 +54,7 @@ export class Tables {
   async componentWillLoad() {
     this.tableService = new TableService();
     this.tables = [];
+    this.attemptedDeletedTable = {description: ''}
     this.tables = await this.tableService.listTables();
   }
 
@@ -81,11 +86,28 @@ export class Tables {
             {this.tables.map(table =>
               <div class='table-list-item'>
                 <wtr-typography>{table.description}</wtr-typography>
-                <img src='assets/icon/trash-alt.svg' alt='' onClick={() => this.deleteTable(table.id)}/>
+                <img src='assets/icon/trash-alt.svg' alt='' onClick={() => this.deleteTable(table)}/>
               </div>
             )}
           </div>
         </wtr-container>
+        {this.attemptedDeletedTable.description && (
+          <div class='popup'>
+            <div class='popup-content'>
+              <wtr-typography variant='h1'>
+                Sorry
+              </wtr-typography>
+              <wtr-typography>
+                Der Tisch {this.attemptedDeletedTable.description} kann nicht gelöscht werden, da zu diesem Tisch
+                bereits Bestellungen erfasst wurden.
+              </wtr-typography>
+              <wtr-button variant='contained' color='primary'
+                          onClick={() => this.attemptedDeletedTable = {description: ''}}>
+                Schliessen
+              </wtr-button>
+            </div>
+          </div>
+        )}
       </div>
     );
   }
